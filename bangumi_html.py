@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup, Tag
 from .models import CalendarDay, CalendarItem, EpisodeComment, ReviewDetail, ReviewSummary
 
 
-BGM_BASE = "https://bgm.tv"
+BGM_BASE = "https://bangumi.pro"  # 改用 bangumi.pro 反代镜像（原为 https://bgm.tv）
 
 
 class BangumiHTMLError(Exception):

@@ -9,7 +9,7 @@ import httpx
 from .models import Episode, Subject, SubjectDetail, SubjectPerson, SubjectRelation
 
 
-API_BASE = "https://api.bgm.tv/v0"
+API_BASE = "https://api.bangumi.pro/v0"  # 改用 bangumi.pro 反代镜像（原为 https://api.bgm.tv/v0）
 
 _TYPE_MAP: dict[str, int] = {
     "anime": 2,
