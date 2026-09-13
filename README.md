@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎬 Bangumi 动漫高手插件
+# 🎬 Bangumi 动漫高手插件 · 反代版
 
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 [![Manifest](https://img.shields.io/badge/manifest-v2-7c3aed?style=flat-square)](_manifest.json)
@@ -8,6 +8,9 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-22c55e?style=flat-square)]()
 
 接入 [Bangumi](https://bgm.tv) 🎯 让你的 MaiBot 变身动画高手——新番速览、每日放送、单集吐槽、长评阅读、制作阵容，动画·游戏·书籍一网打尽。
+
+> 本仓库为 [FFFold/bangumi_browse_plugin](https://github.com/FFFold/bangumi_browse_plugin) 的 fork。
+> 改动：数据源切换到反代站点 `bangumi.pro`，**大陆网络无需代理**即可访问。详见 [`docs/access-via-mirror.md`](docs/access-via-mirror.md)。
 
 </div>
 
@@ -33,7 +36,7 @@
 
 ```bash
 cd MaiBot/plugins
-git clone https://github.com/FFFold/bangumi_browse_plugin
+git clone https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-
 ```
 
 重启 MaiBot 或通过 WebUI 加载即可 🚀
@@ -50,7 +53,7 @@ enabled = true
 
 [request]
 timeout = 15
-user_agent = "FFFold/bangumi-browse-plugin (https://github.com/FFFold/bangumi_browse_plugin)"
+user_agent = "FFFold/bangumi-browse-plugin (https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-)"
 proxy = ""
 ```
 

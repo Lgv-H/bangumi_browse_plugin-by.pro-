@@ -1,19 +1,19 @@
 {
   "manifest_version": 2,
-  "id": "github.fffold.bangumi-browse-plugin",
+  "id": "github.lgv-h.bangumi-browse-plugin-by.pro-",
   "version": "1.0.1",
-  "name": "Bangumi 动漫高手插件",
-  "description": "接入 Bangumi (bgm.tv)，让你的 MaiBot 变身动画高手！支持新番速览、每日放送、单集吐槽、长评阅读、制作阵容查询，动画/游戏/书籍一网打尽。",
+  "name": "Bangumi 动漫高手插件 · 反代版",
+  "description": "接入 Bangumi (bgm.tv)，让你的 MaiBot 变身动画高手！支持新番速览、每日放送、单集吐槽、长评阅读、制作阵容查询，动画/游戏/书籍一网打尽。本版经 bangumi.pro 反代访问，大陆网络无需代理即可使用。",
   "author": {
-    "name": "FFFold",
-    "url": "https://github.com/FFFold"
+    "name": "Lgv-H",
+    "url": "https://github.com/Lgv-H"
   },
   "license": "MIT",
   "urls": {
-    "repository": "https://github.com/FFFold/bangumi_browse_plugin",
-    "homepage": "https://github.com/FFFold/bangumi_browse_plugin",
-    "documentation": "https://github.com/FFFold/bangumi_browse_plugin/blob/main/README.md",
-    "issues": "https://github.com/FFFold/bangumi_browse_plugin/issues"
+    "repository": "https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-",
+    "homepage": "https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-",
+    "documentation": "https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-/blob/main/README.md",
+    "issues": "https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-/issues"
   },
   "host_application": {
     "min_version": "1.0.0",
