@@ -128,7 +128,9 @@ class BangumiAPI:
             params["year"] = year
         if month is not None:
             params["month"] = month
-        if cat is not None:
+        # cat 是「动画分类」过滤（见 get_bangumi_season 的参数说明「仅 anime 有效」）。
+        # 其他类型若带上 cat，API 会直接拒绝：book / music / game → HTTP 400。
+        if cat is not None and type_int == 2:
             params["cat"] = cat
 
         data = await self._get("/subjects", **params)
