@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎬 Bangumi 动漫高手插件 · 反代版
+# 🎬 Bangumi 动漫高手插件 · 反代版（deepseek修改，不保证没bug）
 
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 [![Manifest](https://img.shields.io/badge/manifest-v2-7c3aed?style=flat-square)](_manifest.json)
