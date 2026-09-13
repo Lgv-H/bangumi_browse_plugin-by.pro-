@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, Union
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, model_validator
 
 
 _SUBJECT_TYPE_MAP: dict[int, str] = {
@@ -22,12 +22,30 @@ def _to_type_name(v: object) -> str:
     return str(v or "")
 
 
-class RatingInfo(BaseModel):
+class _NullSafe(BaseModel):
+    """容忍 API 返回的 null。
+
+    Bangumi API 对「未定档 / 未评分 / 无简介」等条目会返回 null，
+    而字段声明是非可选类型（如 `date: str = ""`）。pydantic 仅在「键缺失」时
+    才使用默认值，显式传入 None 会报 ValidationError。
+
+    这里在校验前丢弃值为 None 的键，让 pydantic 回落到字段默认值。
+    """
+
+    @model_validator(mode="before")
+    @classmethod
+    def _drop_none_values(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            return {k: v for k, v in data.items() if v is not None}
+        return data
+
+
+class RatingInfo(_NullSafe):
     score: float = 0.0
     total: int = 0
 
 
-class ImageInfo(BaseModel):
+class ImageInfo(_NullSafe):
     large: str = ""
     common: str = ""
     medium: str = ""
@@ -35,7 +53,7 @@ class ImageInfo(BaseModel):
     grid: str = ""
 
 
-class Subject(BaseModel):
+class Subject(_NullSafe):
     """搜索结果/列表中的条目摘要。"""
 
     id: int
@@ -153,7 +171,7 @@ _PERSON_RELATION_PRIORITY: dict[str, int] = {
 }
 
 
-class SubjectPerson(BaseModel):
+class SubjectPerson(_NullSafe):
     """制作人员。"""
 
     id: int
@@ -173,7 +191,7 @@ class SubjectPerson(BaseModel):
         return str(v or "")
 
 
-class Episode(BaseModel):
+class Episode(_NullSafe):
     """剧集列表项。"""
 
     id: int
@@ -189,7 +207,7 @@ class Episode(BaseModel):
     subject_id: int = 0
 
 
-class SubjectRelation(BaseModel):
+class SubjectRelation(_NullSafe):
     """关联作品。"""
 
     id: int
@@ -199,7 +217,7 @@ class SubjectRelation(BaseModel):
     relation: str = ""
 
 
-class CalendarItem(BaseModel):
+class CalendarItem(_NullSafe):
     """每日放送中的单部动画。"""
 
     subject_id: int
@@ -209,7 +227,7 @@ class CalendarItem(BaseModel):
     cover: str = ""
 
 
-class CalendarDay(BaseModel):
+class CalendarDay(_NullSafe):
     """单日放送安排。"""
 
     weekday: str = ""
@@ -217,7 +235,7 @@ class CalendarDay(BaseModel):
     items: list[CalendarItem] = []
 
 
-class EpisodeComment(BaseModel):
+class EpisodeComment(_NullSafe):
     """单集吐槽箱评论。"""
 
     username: str = ""
@@ -226,7 +244,7 @@ class EpisodeComment(BaseModel):
     time: str = ""
 
 
-class ReviewSummary(BaseModel):
+class ReviewSummary(_NullSafe):
     """作品长评列表项。"""
 
     review_id: int
@@ -237,7 +255,7 @@ class ReviewSummary(BaseModel):
     summary: str = ""
 
 
-class ReviewDetail(BaseModel):
+class ReviewDetail(_NullSafe):
     """单篇长评完整内容。"""
 
     review_id: int
