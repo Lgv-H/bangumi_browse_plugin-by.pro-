@@ -7,10 +7,12 @@
 [![MaiBot](https://img.shields.io/badge/MaiBot-plugin-f97316?style=flat-square)](https://github.com/AnotiaWang/MaiBot)
 [![Python](https://img.shields.io/badge/python-3.11%2B-22c55e?style=flat-square)]()
 
-接入 [Bangumi](https://bgm.tv) 🎯 让你的 MaiBot 变身动画高手——新番速览、每日放送、单集吐槽、长评阅读、制作阵容，动画·游戏·书籍一网打尽。
+接入 [Bangumi](https://bangumi.pro) 🎯 让你的 MaiBot 变身动画高手——新番速览、每日放送、单集吐槽、长评阅读、制作阵容，动画·游戏·书籍一网打尽。
 
 > 本仓库为 [FFFold/bangumi_browse_plugin](https://github.com/FFFold/bangumi_browse_plugin) 的 fork。
 > 改动：数据源切换到反代站点 `bangumi.pro`，**大陆网络无需代理**即可访问。详见 [`docs/access-via-mirror.md`](docs/access-via-mirror.md)。
+>
+> ⚠️ **本版必须把 `user_agent` 配成浏览器 UA**，否则「每日放送 / 单集吐槽 / 长评」三项会返回 403。配置见下方「⚙️ 配置」。
 
 </div>
 
@@ -52,16 +54,18 @@ git clone https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-
 enabled = true
 
 [request]
-timeout = 15
-user_agent = "FFFold/bangumi-browse-plugin (https://github.com/Lgv-H/bangumi_browse_plugin-by.pro-)"
+timeout = 20
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 proxy = ""
 ```
 
-| 配置项 | 说明 | 默认值 |
+| 配置项 | 说明 | 建议值 |
 |--------|------|--------|
-| `timeout` | HTTP 请求超时（秒） | `15` |
-| `user_agent` | Bangumi API 要求的 UA，须含项目链接 | 见上 |
-| `proxy` | HTTP 代理，如 `http://127.0.0.1:7890` | 空 |
+| `timeout` | HTTP 请求超时（秒） | `20` |
+| `user_agent` | **必须为浏览器 UA** —— 反代站 `bangumi.pro` 的**网页侧**有反爬校验，非浏览器 UA 会返回 `403`；**API 侧**（`api.bangumi.pro`）不校验 UA | 见上 |
+| `proxy` | HTTP 代理。**本版走反代，通常留空即可** | 空 |
+
+> 💡 若你所在网络连 `bangumi.pro` 也不通畅，可回退到「官方源 + 自备代理」：把 `proxy` 填上代理地址，并将 `bangumi_api.py`、`bangumi_html.py` 中的两个 base URL 改回 `https://api.bgm.tv/v0` 与 `https://bgm.tv`。
 
 ---
 
@@ -100,6 +104,8 @@ proxy = ""
 
 <div align="center">
 
-**MIT © [FFFold](https://github.com/FFFold)**
+**MIT © [FFFold](https://github.com/FFFold)（原作）**
+
+**本 fork 由 [Lgv-H](https://github.com/Lgv-H) 维护 · 反代适配**
 
 </div>
